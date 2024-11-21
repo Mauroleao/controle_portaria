@@ -52,18 +52,20 @@ function App() {
       }else{
         setAutomoveis([...automoveis, retorno_convertido]);
         alert("Automóvel cadastrado com sucesso!");
-        setObjAutomovel(automovel);
+        limparFormulario();
       }  
 
   })
 }
 
-
-
+// Limpar formulário
+const limparFormulario = () => {
+  setObjAutomovel(automovel);
+};
   // Retorno
   return (
     <div>
-    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar}/>
+    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel}/>
     <Tabela vetor={automoveis}/>
     </div>
   );
