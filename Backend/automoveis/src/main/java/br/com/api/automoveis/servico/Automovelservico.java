@@ -35,7 +35,7 @@ public class Automovelservico {
             rm.setMensagem("A Modelo do automóvel é obrigatória");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
         }else{
-            if(acao.equals("cadstrar")){
+            if(acao.equals("cadastrar")){
                 return new ResponseEntity<AutomovelModelo>(ar.save(am), HttpStatus.CREATED);
             }else{
                 return new ResponseEntity<AutomovelModelo>(ar.save(am), HttpStatus.OK);    

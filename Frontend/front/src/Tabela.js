@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Tabela({vetor}) {
     return (
     
@@ -29,8 +31,8 @@ function Tabela({vetor}) {
                 )) 
             }
         </tbody>
-    </table>
-    
-    )
-}
+        </table>
+        )
+    }
+
 export default Tabela;

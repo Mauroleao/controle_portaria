@@ -24,7 +24,8 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:8080/listar")
       .then((retorno) => retorno.json())
-      .then(retorno_convertido => setAutomoveis(retorno_convertido));
+      .then(retorno_convertido => setAutomoveis(retorno_convertido))
+      .catch(error => console.error('Error fetching data:', error));
 }, []);
 
 //Obtendo os dados do formulário
@@ -33,11 +34,36 @@ function App() {
     
   }
 
+  //Cadastrar automoveis
+  const cadastrar = () => {
+    fetch("http://localhost:8080/cadastrar",{// requisições tipo get
+    method: "post",
+    body:JSON.stringify(objAutomovel),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  })
+    .then((retorno) => retorno.json())
+    .then(retorno_convertido =>{
+
+      if(retorno_convertido.mensagem !== undefined){
+        alert(retorno_convertido.mensagem);
+      }else{
+        setAutomoveis([...automoveis, retorno_convertido]);
+        alert("Automóvel cadastrado com sucesso!");
+        setObjAutomovel(automovel);
+      }  
+
+  })
+}
+
+
+
   // Retorno
   return (
     <div>
-    <p>{JSON.stringify(objAutomovel)}</p>
-    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} />
+    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar}/>
     <Tabela vetor={automoveis}/>
     </div>
   );
