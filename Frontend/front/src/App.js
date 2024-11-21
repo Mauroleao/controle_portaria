@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Formulario from './Formulario';
+import Tabela from './Tabela';
+
 
 function App() {
+
+  // Objeto produto
+  const automovel = {
+    codigo:"0",
+    modelo: "",
+    marca: "",
+    cor: "",
+    placa: "",
+    ano: ""
+  }
+  // UseState
+  const [btnCadastrar, setBtnCadastrar] = useState(true);
+  const [automoveis, setAutomoveis] = useState([]);
+  const [objAutomovel, setObjAutomovel] = useState(automovel);
+
+  //UseEffect
+  useEffect(() => {
+    fetch("http://localhost:8080/listar")
+      .then((retorno) => retorno.json())
+      .then(retorno_convertido => setAutomoveis(retorno_convertido));
+}, []);
+
+//Obtendo os dados do formulário
+  const aoDigitar = (e) => {
+    setObjAutomovel({...objAutomovel,[e.target.name]: e.target.value});
+    
+  }
+
+  // Retorno
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <p>{JSON.stringify(objAutomovel)}</p>
+    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} />
+    <Tabela vetor={automoveis}/>
     </div>
   );
 }
