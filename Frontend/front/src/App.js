@@ -53,9 +53,82 @@ function App() {
         setAutomoveis([...automoveis, retorno_convertido]);
         alert("Automóvel cadastrado com sucesso!");
         limparFormulario();
+          }
+        })
+      }
+
+
+  //alterar automoveis
+  const alterar = () => {
+    fetch("http://localhost:8080/alterar",{// requisições tipo get
+    method: "put",
+    body:JSON.stringify(objAutomovel),
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  })
+    .then((retorno) => retorno.json())
+    .then(retorno_convertido =>{
+
+      if(retorno_convertido.mensagem !== undefined){
+        alert(retorno_convertido.mensagem);
+      }else{
+        //Menssagem
+        alert("Automóvel Alterado com sucesso!");
+
+    //Cópia do vetor de automóveis
+    let vetorTemp = [...automoveis];
+
+    //Índice
+    let indice = vetorTemp.findIndex((p) =>{
+      return p.codigo === objAutomovel.codigo;
+    });
+
+    //Alterar automóvel do vetor temporário
+    vetorTemp[indice] = objAutomovel;
+    //Atualizar o vetor de automóveis
+    setAutomoveis(vetorTemp);
+
+        //Limpar formulário
+        limparFormulario();
       }  
 
   })
+}    
+
+ //Remover automoveis
+  const remover = () => {
+  fetch("http://localhost:8080/remover/"+objAutomovel.codigo,{// requisições tipo get
+  method: "delete",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  }
+})
+  .then((retorno) => retorno.json())
+  .then(retorno_convertido =>{
+
+    //Mensagem
+    alert(retorno_convertido.mensagem);
+    
+    //Cópia do vetor de automóveis
+    let vetorTemp = [...automoveis];
+
+    //Índice
+    let indice = vetorTemp.findIndex((p) =>{
+      return p.codigo === objAutomovel.codigo;
+    });
+
+    //Remover automóvel do vetor temporário
+    vetorTemp.splice(indice,1);
+
+    //Atualizar o vetor de automóveis
+    setAutomoveis(vetorTemp);
+
+    //Limpar formulário
+    limparFormulario();
+})
 }
 
 // Limpar formulário
@@ -73,10 +146,11 @@ const SelecionarAutomovel = (indice) => {
   // Retorno
   return (
     <div>
-    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel} cancelar={limparFormulario}/>
+    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel} cancelar={limparFormulario} remover={remover} alterar={alterar}/>
     <Tabela vetor={automoveis} selecionar={SelecionarAutomovel}/>
     </div>
   );
 }
+
 
 export default App;
