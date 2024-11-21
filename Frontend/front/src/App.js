@@ -61,12 +61,20 @@ function App() {
 // Limpar formulário
 const limparFormulario = () => {
   setObjAutomovel(automovel);
+  setBtnCadastrar(true);
 };
+
+//Selecionar o Produto
+const SelecionarAutomovel = (indice) => {
+  setObjAutomovel(automoveis[indice]);
+  setBtnCadastrar(false);
+}
+
   // Retorno
   return (
     <div>
-    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel}/>
-    <Tabela vetor={automoveis}/>
+    <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel} cancelar={limparFormulario}/>
+    <Tabela vetor={automoveis} selecionar={SelecionarAutomovel}/>
     </div>
   );
 }
