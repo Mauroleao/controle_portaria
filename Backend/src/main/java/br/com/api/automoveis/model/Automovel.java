@@ -1,4 +1,4 @@
-package br.com.api.automoveis.modelo;
+package br.com.api.automoveis.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "automoveis")
 @Getter
 @Setter
-public class AutomovelModelo {
+public class Automovel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

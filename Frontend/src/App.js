@@ -35,27 +35,27 @@ function App() {
   }
 
   //Cadastrar automoveis
-  const cadastrar = () => {
-    fetch("http://localhost:8080/cadastrar",{// requisições tipo get
-    method: "post",
-    body:JSON.stringify(objAutomovel),
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    }
-  })
-    .then((retorno) => retorno.json())
-    .then(retorno_convertido =>{
-
-      if(retorno_convertido.mensagem !== undefined){
-        alert(retorno_convertido.mensagem);
-      }else{
-        setAutomoveis([...automoveis, retorno_convertido]);
-        alert("Automóvel cadastrado com sucesso!");
-        limparFormulario();
-          }
-        })
+  function cadastrar() {
+    fetch("http://localhost:8080/cadastrar", {
+      method: "post",
+      body: JSON.stringify(objAutomovel),
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       }
+    })
+      .then((retorno) => retorno.json())
+      .then(retorno_convertido => {
+
+        if (retorno_convertido.mensagem !== undefined) {
+          alert(retorno_convertido.mensagem);
+        } else {
+          setAutomoveis([...automoveis, retorno_convertido]);
+          alert("Automóvel cadastrado com sucesso!");
+          limparFormulario();
+        }
+      });
+  }
 
 
   //alterar automoveis
