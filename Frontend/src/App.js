@@ -68,7 +68,7 @@ function App() {
       "Accept": "application/json"
     }
   })
-    .then((retorno) => retorno.json())
+    .then(retorno => retorno.json())
     .then(retorno_convertido =>{
 
       if(retorno_convertido.mensagem !== undefined){
