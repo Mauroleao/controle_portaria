@@ -8,7 +8,7 @@ function App() {
 
   // Objeto produto
   const automovel = {
-    codigo:"0",
+    id:"0",
     modelo: "",
     marca: "",
     cor: "",
@@ -99,7 +99,7 @@ function App() {
 
  //Remover automoveis
   const remover = () => {
-  fetch("http://localhost:8080/remover/"+objAutomovel.codigo,{// requisições tipo get
+  fetch("http://localhost:8080/remover/"+objAutomovel.id,{// requisições tipo get
   method: "delete",
   headers: {
     "Content-Type": "application/json",
