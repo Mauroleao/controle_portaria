@@ -25,23 +25,23 @@ public class AutomovelController {
     @Autowired
     private Automovelservico as;
 
-    @DeleteMapping("/remover/{codigo}")
+    @DeleteMapping("/automovel/remover/{codigo}")
     public ResponseEntity<RespostaModel> remover(@PathVariable long codigo){
         return as.remover(codigo);
     }
 
-    @PutMapping("/alterar")
+    @PutMapping("/automovel/alterar")
     public ResponseEntity<?> alterar(@RequestBody Automovel am){
         return as.cadastrarAlterar(am, "alterar");
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/automovel/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody Automovel am){
         return as.cadastrarAlterar(am, "cadstrar");
     }
     
 
-    @GetMapping("/listar")
+    @GetMapping("/automovel/listar")
     public Iterable<Automovel>listar(){
         return as.listar();
     }

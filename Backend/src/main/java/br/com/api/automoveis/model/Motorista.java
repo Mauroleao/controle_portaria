@@ -1,34 +1,30 @@
 package br.com.api.automoveis.model;
 
-import java.time.LocalTime;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
-@Table(name = "automoveis")
+@Table(name = "motoristas")
 @Getter
 @Setter
-public class Automovel {
+public class Motorista {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String placa;
-    private String modelo;
-    private String marca;
-    private int ano;
-    private String cor;
+    private String nome;
+    private String cnh;
 
-    private LocalTime horaEntrada;
-    private LocalTime horaSaida;
-
-    @ManyToOne
-    private Motorista motorista;
+    @OneToMany(mappedBy = "motorista")
+    @JsonBackReference
+    private List<Automovel> automoveis;
 }
