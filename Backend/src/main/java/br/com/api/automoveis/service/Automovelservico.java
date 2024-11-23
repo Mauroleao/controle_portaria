@@ -15,8 +15,8 @@ public class Automovelservico {
     @Autowired
     private AutomovelRepository ar;
 
-    @Autowired
-    private RespostaModel rm;
+    // Remove @Autowired for RespostaModel
+    private RespostaModel rm = new RespostaModel();
 
 
     // Método para listar todos os automóveis
@@ -32,7 +32,7 @@ public class Automovelservico {
             rm.setMensagem("O Modelo é obrigatório");
             return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
         }else if(am.getPlaca().equals("")){
-            rm.setMensagem("A Modelo do automóvel é obrigatória");
+            rm.setMensagem("A Placa do automóvel é obrigatória");
             return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
         }else{
             if(acao.equals("cadastrar")){

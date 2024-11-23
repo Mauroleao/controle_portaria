@@ -6,8 +6,8 @@ function Home() {
   return (
     <div>
       <h1>Welcome to the Home Page</h1>
-      <Link to="/automoveis">Go to Automóveis</Link>
-      <Link to="/automoveis">Go to Automóveis</Link>
+      <Link to="/automoveis">Pagina de Automoveis</Link><br />
+      <Link to="/motoristas">Pagina de Motoristas</Link>
     </div>
   );
 }
