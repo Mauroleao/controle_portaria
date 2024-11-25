@@ -1,13 +1,32 @@
-// filepath: /c:/Users/mauro/OneDrive/Desktop/controle_portaria/Frontend/src/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import '../assets/styles/home.css';
 
 function Home() {
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <Link to="/automoveis">Pagina de Automoveis</Link><br />
-      <Link to="/motoristas">Pagina de Motoristas</Link>
+    <div className="home-container">
+      <Header /> 
+      <main className="main-content">
+        <div className="link-container">
+          <Link to="/automoveis">
+            <img 
+              src={require('../assets/images/automoveis.png')} 
+              alt="Pagina de Automoveis" 
+              className="button-image" 
+            />
+          </Link>
+          <Link to="/motoristas">
+            <img 
+              src={require('../assets/images/motoristas.png')} 
+              alt="Pagina de Motoristas" 
+              className="button-image" 
+            />
+          </Link>
+        </div>
+      </main>
+      <Footer /> 
     </div>
   );
 }

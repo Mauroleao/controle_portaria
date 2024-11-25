@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Formulario from '../FormularioMoto';
-import TabelaMoto from '../TabelaMoto';
+import Formulario from '../components/FormularioMotoristas';
+import TabelaMoto from '../components/TabelaMotoristas';
+import Footer from '../components/Footer'; // Importação correta do Footer
+import Header from '../components/Header'; // Importação correta do Header
+import '../assets/styles/footer.css';
+import '../assets/styles/header.css';
 
 function MotoristaPage() {
     const motorista = {
@@ -103,8 +107,10 @@ function MotoristaPage() {
 
     return (
         <div>
+            <Header />
             <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objMotorista} cancelar={limparFormulario} remover={remover} alterar={alterar} />
             <TabelaMoto vetor={motoristas} selecionar={SelecionarMotorista} />
+            <Footer />
         </div>
     );
 }

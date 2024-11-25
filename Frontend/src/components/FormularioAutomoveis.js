@@ -1,8 +1,8 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
 
-function Formulario({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, alterar }) {
-    {/*Função para formatar a data no formato padrão ISO 8601*/}
+function FormularioAutomoveis({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, alterar }) {
+    
     const formatDate = (date) => {
         if (!date) return '';
         const d = new Date(date);
@@ -19,13 +19,22 @@ function Formulario({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, a
             <InputMask mask="9999" value={obj.ano} onChange={eventoTeclado} name="ano" placeholder="Ano" className="form-control" /> {/*extenção para padronizar o envio de informação para API*/}
             <input type="datetime-local" value={formatDate(obj.horaEntrada)} onChange={eventoTeclado} name="horaEntrada" className="form-control" />
             <input type="datetime-local" value={formatDate(obj.horaSaida)} onChange={eventoTeclado} name="horaSaida" className="form-control" />
-            <input type="text" value={obj.motoristaId} onChange={eventoTeclado} name="motoristaId" placeholder="Motorista ID" className="form-control" />
-            <button onClick={cadastrar} className="btn btn-primary">{botao ? "Cadastrar" : "Atualizar"}</button>
-            <button onClick={cancelar} className="btn btn-secondary">Cancelar</button>
-            <button onClick={remover} className="btn btn-danger">Remover</button>
-            <button onClick={alterar} className="btn btn-warning">Alterar</button>
+            
+            {botao
+            ? (
+                <>
+                    <input type='button' value='Cadastrar' onClick={cadastrar} className='btn btn-primary' />
+                    <input type='button' value='Voltar' onClick={() => window.location.href = '/'} className='btn btn-primary' />
+                </>
+            ) : (
+            <div>
+                <input type='button' value='Alterar' onClick={alterar} className='btn btn-secondary' />
+                <input type='button' value='Remover' onClick={remover} className='btn btn-danger' />
+                <input type='button' value='Cancelar' onClick={cancelar} className='btn btn-warning' />
+            </div>
+            )}
         </form>
     );
 }
 
-export default Formulario;
+export default FormularioAutomoveis;

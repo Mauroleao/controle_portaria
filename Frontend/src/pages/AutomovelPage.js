@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Formulario from '../Formulario';
-import Tabela from '../Tabela';
+import Formulario from '../components/FormularioAutomoveis';
+import Tabela from '../components/TabelaAutomoveis';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import '../assets/styles/footer.css';
+import '../assets/styles/header.css';
 
 function App() {
     // Objeto Automovel
@@ -12,8 +16,7 @@ function App() {
         placa: "",
         ano: "",
         horaEntrada: "",
-        horaSaida: "",
-        motoristaId: ""
+        horaSaida: ""
     };
 
     // UseState
@@ -34,6 +37,7 @@ function App() {
         setObjAutomovel({ ...objAutomovel, [e.target.name]: e.target.value });
     };
 
+    // Formatando a data para o padrão da API -
     const formatDateForApi = (date) => {
         if (!date) return '';
         const d = new Date(date);
@@ -57,7 +61,7 @@ function App() {
                 "Accept": "application/json"
             }
         })
-            .then((retorno) => retorno.json())
+            .then((retorno) => retorno.json()) // Convertendo o retorno da API para JSON
             .then(retorno_convertido => {
                 if (retorno_convertido.mensagem !== undefined) {
                     alert(retorno_convertido.mensagem);
@@ -73,7 +77,7 @@ function App() {
     const alterar = () => {
         const automovelParaApi = {
             ...objAutomovel,
-            horaEntrada: formatDateForApi(objAutomovel.horaEntrada),
+            horaEntrada: formatDateForApi(objAutomovel.horaEntrada), // Formatando data 
             horaSaida: formatDateForApi(objAutomovel.horaSaida)
         };
 
@@ -137,8 +141,10 @@ function App() {
     // Retorno
     return (
         <div>
+            <Header />
             <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel} cancelar={limparFormulario} remover={remover} alterar={alterar} />
             <Tabela vetor={automoveis} selecionar={SelecionarAutomovel} />
+            <Footer />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Tabela({ vetor, selecionar }) {
+function TabelaAutomoveis({ vetor, selecionar }) {
     return (
         <table className="table">
             <thead>
@@ -13,7 +13,6 @@ function Tabela({ vetor, selecionar }) {
                     <th>Ano</th>
                     <th>Hora de entrada</th>
                     <th>Hora de saída</th>
-                    <th>Motorista ID</th>
                     <th>Selecionar</th>
                 </tr>
             </thead>
@@ -29,7 +28,6 @@ function Tabela({ vetor, selecionar }) {
                             <td>{obj.ano}</td>
                             <td>{obj.horaEntrada}</td>
                             <td>{obj.horaSaida}</td>
-                            <td>{obj.motoristaId}</td>
                             <td><button onClick={() => { selecionar(indice) }} className="btn btn-success">Selecionar</button></td>
                         </tr>
                     ))
@@ -39,4 +37,4 @@ function Tabela({ vetor, selecionar }) {
     );
 }
 
-export default Tabela;
+export default TabelaAutomoveis;
