@@ -12,13 +12,13 @@ function FormularioAutomoveis({ botao, eventoTeclado, cadastrar, obj, cancelar, 
 
     return (
         <form>
-            <input type="text" value={obj.modelo} onChange={eventoTeclado} name="modelo" placeholder="Modelo" className="form-control" />
-            <input type="text" value={obj.marca} onChange={eventoTeclado} name="marca" placeholder="Marca" className="form-control" />
-            <input type="text" value={obj.cor} onChange={eventoTeclado} name="cor" placeholder="Cor" className="form-control" />
-            <InputMask mask="aaa-9999" value={obj.placa} onChange={eventoTeclado} name="placa" placeholder="Placa" className="form-control" />{/*extenção para padronizar o envio de informação para API*/ } 
-            <InputMask mask="9999" value={obj.ano} onChange={eventoTeclado} name="ano" placeholder="Ano" className="form-control" /> {/*extenção para padronizar o envio de informação para API*/}
-            <input type="datetime-local" value={formatDate(obj.horaEntrada)} onChange={eventoTeclado} name="horaEntrada" className="form-control" />
-            <input type="datetime-local" value={formatDate(obj.horaSaida)} onChange={eventoTeclado} name="horaSaida" className="form-control" />
+            <input type="text" value={obj.modelo} onChange={eventoTeclado} name="modelo" placeholder="Modelo" className="form-control" required />
+            <input type="text" value={obj.marca} onChange={eventoTeclado} name="marca" placeholder="Marca" className="form-control" required />
+            <input type="text" value={obj.cor} onChange={eventoTeclado} name="cor" placeholder="Cor" className="form-control" required />
+            <InputMask mask="aaa-9999" value={obj.placa} onChange={eventoTeclado} name="placa" placeholder="Placa" className="form-control" required />
+            <InputMask mask="9999" value={obj.ano} onChange={eventoTeclado} name="ano" placeholder="Ano" className="form-control" required />
+            <input type="datetime-local" value={formatDate(obj.horaEntrada)} onChange={eventoTeclado} name="horaEntrada" className="form-control" required />
+            <input type="datetime-local" value={formatDate(obj.horaSaida)} onChange={eventoTeclado} name="horaSaida" className="form-control" required />
             
             {botao
             ? (

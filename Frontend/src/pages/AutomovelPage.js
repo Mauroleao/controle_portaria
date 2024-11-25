@@ -122,6 +122,7 @@ function App() {
                 let indice = vetorTemp.findIndex((p) => p.id === objAutomovel.id);
                 vetorTemp.splice(indice, 1);
                 setAutomoveis(vetorTemp);
+
                 limparFormulario();
             });
     };
@@ -143,7 +144,7 @@ function App() {
         <div>
             <Header />
             <Formulario botao={btnCadastrar} eventoTeclado={aoDigitar} cadastrar={cadastrar} obj={objAutomovel} cancelar={limparFormulario} remover={remover} alterar={alterar} />
-            <Tabela vetor={automoveis} selecionar={SelecionarAutomovel} />
+            <Tabela vetor={automoveis} selecionar={SelecionarAutomovel} />< br />
             <Footer />
         </div>
     );
