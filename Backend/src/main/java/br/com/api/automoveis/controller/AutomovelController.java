@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-// Mapemanto de rotas da API
+// Mapemanto de rotas da API e seus endpoints
 @RestController
 @CrossOrigin(origins = "*")
 public class AutomovelController {
@@ -25,20 +25,47 @@ public class AutomovelController {
     @Autowired
     private Automovelservico as;
 
+    /**
+     * Remove um motorista com base no ID fornecido.
+     *
+     * @param codigo Código do motorista a ser removido.
+     * @return Resposta modelo de remoção.
+     */
+
     @DeleteMapping("/automovel/remover/{codigo}")
     public ResponseEntity<RespostaModel> remover(@PathVariable long codigo){
         return as.remover(codigo);
     }
+
+    /**
+     * Atualiza os dados de um motorista existente.
+     *
+     * @param automovel Objeto Motorista com os dados atualizados.
+     * @return Retorna com o resultado da operação.
+    */
 
     @PutMapping("/automovel/alterar")
     public ResponseEntity<?> alterar(@RequestBody Automovel am){
         return as.cadastrarAlterar(am, "alterar");
     }
 
+    /**
+     * Cadastra um novo motorista.
+     *
+     * @param automovel Objeto Motorista a ser cadastrado.
+     * @return Retorna com o resultado da operação.
+     */
+
     @PostMapping("/automovel/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody Automovel am){
         return as.cadastrarAlterar(am, "cadstrar");
     }
+
+    /**
+     * Lista todos os motoristas cadastrados.
+     *
+     * @return Retorna com os motoristas existentes no banco.
+     */
     
 
     @GetMapping("/automovel/listar")
@@ -47,7 +74,7 @@ public class AutomovelController {
     }
 
 
-
+    //endpoint de teste da API
     @GetMapping("/")
     public String rota(){
         return "Api esta funcionando";

@@ -28,6 +28,7 @@ public class Automovel {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime horaSaida;
 
-    @ManyToOne
-    private Motorista motorista;
+    @ManyToOne// falta implementar o relacionamento
+    private Motorista motorista; // o motorista podera ter varios automoveis:
+
 }

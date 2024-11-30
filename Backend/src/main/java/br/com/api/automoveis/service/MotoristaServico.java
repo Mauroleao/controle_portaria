@@ -18,12 +18,22 @@ public class MotoristaServico {
     @Autowired
     private RespostaModel rm;
 
-    // Método para listar todos os motoristas
+    /**
+     * Lista todos os motoristas cadastrados.
+     *
+     * @return Vai retornar todos oc motoristas que já estão cadastrados
+     */
     public Iterable<Motorista> listar() {
         return mr.findAll();
     }
 
-    // Método para cadastrar ou alterar motoristas
+    /**
+     * Cadastra ou altera um motorista.
+     *
+     * @param mt   Objeto que cadastra ou altera os motoristas.
+     * @param acao Aqui vai ser escolhida se vai alterar ou cadastrar.
+     * @return Retorna com o resultado da operação.
+     */
     public ResponseEntity<?> cadastrarAlterar(Motorista mt, String acao) {
         if (mt.getNome().equals("")) {
             rm.setMensagem("O nome é obrigatório");
@@ -40,7 +50,12 @@ public class MotoristaServico {
         }
     }
 
-    // Método para remover motoristas
+    /**
+     * Remove um motorista pelo código.
+     *
+     * @param codigo Código do motorista a ser removido.
+     * @return retorna com a mensagem de sucesso.
+     */
     public ResponseEntity<RespostaModel> remover(long codigo) {
         mr.deleteById(codigo);
         rm.setMensagem("O motorista foi removido com sucesso!");

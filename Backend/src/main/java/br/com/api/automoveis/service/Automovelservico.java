@@ -15,17 +15,26 @@ public class Automovelservico {
     @Autowired
     private AutomovelRepository ar;
 
-    // Remove @Autowired for RespostaModel
     private RespostaModel rm = new RespostaModel();
 
 
-    // Método para listar todos os automóveis
+    /**
+    * Lista todos os automóveis cadastrados.
+    *
+    * @return Vai retornar todos os automoveis que já estão cadastrados.
+    */
     public Iterable<Automovel> listar(){
         return ar.findAll();
     }   
     
     
-    // Método para Cadastrar ou alterar Automoveis
+    /**
+     * Cadastra ou altera um automovel.
+     *
+     * @param mt   Objeto que cadastra ou altera os motoristas.
+     * @param acao Aqui vai ser escolhida se vai alterar ou cadastrar.
+     * @return Retorna com o resultado da operação.
+     */
     public ResponseEntity<?> cadastrarAlterar(Automovel am, String acao){
 
         if(am.getModelo().equals("")){
@@ -59,7 +68,12 @@ public class Automovelservico {
     }
 
 
-    // Método para remover Automoveis
+    /**
+     * Remove um automóvel pelo código.
+     *
+     * @param codigo Código do automóvel a ser removido.
+     * @return retorna com a mensagem de sucesso.
+     */
     public ResponseEntity<RespostaModel> remover(long codigo){
 
         ar.deleteById(codigo);

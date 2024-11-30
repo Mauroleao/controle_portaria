@@ -7,7 +7,7 @@ import '../assets/styles/footer.css';
 import '../assets/styles/header.css';
 
 function App() {
-    // Objeto Automovel
+    // Objeto Automovel utilizado para fazer a troca dos dados entre o formulário e a API no formato Json
     const automovel = {
         id: "0",
         modelo: "",
@@ -19,12 +19,12 @@ function App() {
         horaSaida: ""
     };
 
-    // UseState
+    // UseState > Controle dos Botões para que a 
     const [btnCadastrar, setBtnCadastrar] = useState(true);
     const [automoveis, setAutomoveis] = useState([]);
     const [objAutomovel, setObjAutomovel] = useState(automovel);
 
-    // UseEffect
+    // UseEffect > Carregar os dados da API
     useEffect(() => {
         fetch("http://localhost:8080/automovel/listar")
             .then((retorno) => retorno.json())
