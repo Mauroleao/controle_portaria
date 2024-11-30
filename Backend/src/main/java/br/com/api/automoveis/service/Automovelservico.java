@@ -34,6 +34,21 @@ public class Automovelservico {
         }else if(am.getPlaca().equals("")){
             rm.setMensagem("A Placa do automóvel é obrigatória");
             return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
+        }else if(am.getPlaca().equals("")){
+            rm.setMensagem("A Placa do automóvel é obrigatória");
+            return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
+        }else if(am.getCor().equals("")){
+            rm.setMensagem("A cor é obrigatória");
+            return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
+        }else if(am.getAno() == 0){
+            rm.setMensagem("O Ano do automóvel é obrigatório");
+            return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
+        }else if(am.getHoraEntrada() == null){
+            rm.setMensagem("A Hora de Entrada do automóvel é obrigatória");
+            return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);
+        }else if(am.getHoraSaida() == null){
+            rm.setMensagem("A Hora de Saída do automóvel é obrigatória");
+            return new ResponseEntity<RespostaModel>(rm, HttpStatus.BAD_REQUEST);                
         }else{
             if(acao.equals("cadastrar")){
                 return new ResponseEntity<Automovel>(ar.save(am), HttpStatus.CREATED);

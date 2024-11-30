@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import br.com.api.automoveis.model.Automovel;
 
 @Repository
-public interface AutomovelRepository extends CrudRepository<Automovel, Long> {
-    
+public interface AutomovelRepository extends CrudRepository<Automovel, Long> {    
 }
