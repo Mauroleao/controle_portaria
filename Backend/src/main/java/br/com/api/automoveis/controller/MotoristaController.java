@@ -15,6 +15,8 @@ import br.com.api.automoveis.model.Motorista;
 import br.com.api.automoveis.model.RespostaModel;
 import br.com.api.automoveis.service.MotoristaServico;
 
+
+// Mapemanto de rotas da API
 @RestController
 @CrossOrigin(origins = "*")
 public class MotoristaController {
