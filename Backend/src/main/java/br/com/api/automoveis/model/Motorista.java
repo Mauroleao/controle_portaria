@@ -24,7 +24,7 @@ public class Motorista {
     private String nome;
     private String cnh;
 
-    @OneToMany(mappedBy = "motorista")
+    @OneToMany(mappedBy = "motorista") // falta implementar o relacionamento para que haja apenas um motorista por carro.
     @JsonBackReference
     private List<Automovel> automoveis;
 }

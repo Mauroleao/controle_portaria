@@ -3,6 +3,7 @@ import InputMask from 'react-input-mask';
 
 function FormularioAutomoveis({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, alterar }) {
     
+    // formatando a entrada de data para o formato aceito ela API.
     const formatDate = (date) => {
         if (!date) return '';
         const d = new Date(date);
@@ -20,6 +21,7 @@ function FormularioAutomoveis({ botao, eventoTeclado, cadastrar, obj, cancelar, 
             <input type="datetime-local" value={formatDate(obj.horaEntrada)} onChange={eventoTeclado} name="horaEntrada" className="form-control" required />
             <input type="datetime-local" value={formatDate(obj.horaSaida)} onChange={eventoTeclado} name="horaSaida" className="form-control" required />
             
+            // jogo de botões
             {botao
             ? (
                 <>

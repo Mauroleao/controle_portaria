@@ -19,7 +19,7 @@ function App() {
         horaSaida: ""
     };
 
-    // UseState > Controle dos Botões para que a 
+    // UseState > Controle dos Botões para que a sejam auternados entre Cadastrar e Alterar
     const [btnCadastrar, setBtnCadastrar] = useState(true);
     const [automoveis, setAutomoveis] = useState([]);
     const [objAutomovel, setObjAutomovel] = useState(automovel);
@@ -37,7 +37,7 @@ function App() {
         setObjAutomovel({ ...objAutomovel, [e.target.name]: e.target.value });
     };
 
-    // Formatando a data para o padrão da API -
+    // Formatando a data para o padrão da API (yyyy-MM-dd HH:mm:ss)
     const formatDateForApi = (date) => {
         if (!date) return '';
         const d = new Date(date);
@@ -139,7 +139,7 @@ function App() {
         setBtnCadastrar(false);
     };
 
-    // Retorno
+    // Retorno e renderização dos comonentes
     return (
         <div>
             <Header />

@@ -10,8 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/automoveis" element={<AutomovelPage />} />
-        <Route path="/motoristas" element={<MotoristaPage />} />
+        <Route path="/automoveis" element={<AutomovelPage />} /> // rotas para a página de automóveis
+        <Route path="/motoristas" element={<MotoristaPage />} /> // rotas para a página de motoristas
       </Routes>
     </Router>
   );

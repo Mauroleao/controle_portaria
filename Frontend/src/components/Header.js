@@ -1,5 +1,7 @@
 import React from 'react';
-import '../assets/styles/header.css'; // CSS específico para o Header
+import '../assets/styles/header.css'; 
+
+// Header padrão da aplicação
 
 function Header() {
   return (

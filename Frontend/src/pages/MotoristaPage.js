@@ -7,16 +7,19 @@ import '../assets/styles/footer.css';
 import '../assets/styles/header.css';
 
 function MotoristaPage() {
+    // Objeto Automovel utilizado para fazer a troca dos dados entre o formulário e a API no formato Json
     const motorista = {
         id: "0",
         nome: "",
         cnh: ""
     };
 
+    // UseState > Controle dos Botões para que a sejam auternados entre Cadastrar e Alterar
     const [btnCadastrar, setBtnCadastrar] = useState(true);
     const [motoristas, setMotoristas] = useState([]);
     const [objMotorista, setObjMotorista] = useState(motorista);
 
+    // Carregar os dados da API
     useEffect(() => {
         fetch("http://localhost:8080/motorista/listar")
             .then((retorno) => retorno.json())
@@ -24,10 +27,12 @@ function MotoristaPage() {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+     // Obtendo os dados do formulário
     const aoDigitar = (e) => {
         setObjMotorista({ ...objMotorista, [e.target.name]: e.target.value });
     };
 
+    // Cadastrar motoristas
     const cadastrar = () => {
         fetch("http://localhost:8080/motorista/cadastrar", {
             method: "post",
@@ -37,7 +42,7 @@ function MotoristaPage() {
                 "Accept": "application/json"
             }
         })
-            .then((retorno) => retorno.json())
+            .then((retorno) => retorno.json()) // convertendo o retorno da API para JSON
             .then(retorno_convertido => {
                 if (retorno_convertido.mensagem !== undefined) {
                     alert(retorno_convertido.mensagem);
@@ -50,6 +55,7 @@ function MotoristaPage() {
             .catch(error => console.error('Error:', error));
     };
 
+    // Alterar motoristas
     const alterar = () => {
         fetch("http://localhost:8080/motorista/alterar", {
             method: "put",
@@ -74,7 +80,8 @@ function MotoristaPage() {
                 }
             });
     };
-
+    
+    // Remover motoristas
     const remover = () => {
         fetch("http://localhost:8080/motorista/remover/" + objMotorista.id, {
             method: "delete",
@@ -95,6 +102,7 @@ function MotoristaPage() {
             });
     };
 
+    // Limpa o dormulario resetando o objeto  e seta o botão para Cadastrar
     const limparFormulario = () => {
         setObjMotorista(motorista);
         setBtnCadastrar(true);
@@ -105,6 +113,7 @@ function MotoristaPage() {
         setBtnCadastrar(false);
     };
 
+    // Retorno e renderização dos comonentes
     return (
         <div>
             <Header />
