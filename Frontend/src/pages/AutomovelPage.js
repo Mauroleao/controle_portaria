@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import '../assets/styles/footer.css';
 import '../assets/styles/header.css';
 
-function App() {
+function AutomovelPage() {
     // Objeto Automovel utilizado para fazer a troca dos dados entre o formulário e a API no formato Json
     const automovel = {
         id: "0",
@@ -150,4 +150,4 @@ function App() {
     );
 }
 
-export default App;
+export default AutomovelPage;
