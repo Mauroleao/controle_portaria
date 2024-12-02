@@ -1,6 +1,5 @@
 import React from 'react';
-{/* Formulário de motoristas
-botao: booleano que indica se o formulário é para cadastro ou alteração */}
+
 
 function FormularioMotoristas({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, alterar }) {
     return (
