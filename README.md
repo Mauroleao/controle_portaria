@@ -83,6 +83,57 @@ Tecnologias Utilizadas
 - Backend: Java, Spring Boot, Maven
 - Banco de Dados: MySQL
 
+Endpoints da API.
+```bash
+localhost:8080/automovel/listar
+```
+```bash
+localhost:8080/automovel/cadastrar
+```
+```bash
+localhost:8080/automovel/remover
+```
+```bash
+localhost:8080/automovel/alterar
+```
+Formato esperado para automóvel.
+
+```bash
+{
+    "placa": "ABC-1234",
+    "modelo": "Renegade",
+    "marca": "Renaut",
+    "ano": 2012,
+    "cor": "Preto",
+    "horaEntrada": "2024-11-14 12:02:00",
+    "horaSaida": "2024-11-12 12:02:00",
+    "motorista": null
+  }
+```
+
+Endpoints da API.
+```bash
+localhost:8080/motorista/listar
+```
+```bash
+localhost:8080/motorista/cadastrar
+```
+```bash
+localhost:8080/motorista/remover
+```
+```bash
+localhost:8080/motorista/alterar
+```
+Formato esperado para motorista.
+
+```bash
+{
+    "nome": "Cristiano",
+    "cnh": "656565656"
+  }
+```
+
+
 Observação :
 - Não esqueça de executar o Backend primeiro ou a usabilidade do Frontend será comprometida.
 
