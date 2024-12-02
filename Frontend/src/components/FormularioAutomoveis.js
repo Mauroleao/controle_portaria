@@ -3,7 +3,6 @@ import InputMask from 'react-input-mask';
 
 function FormularioAutomoveis({ botao, eventoTeclado, cadastrar, obj, cancelar, remover, alterar }) {
     
-   {/* formatando a entrada de data para o formato aceito ela API. */} 
     const formatDate = (date) => {
         if (!date) return '';
         const d = new Date(date);
