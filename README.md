@@ -41,7 +41,8 @@ cd seu-repositorio/backend
 ```bash 
 src/main/resources/application.properties.
 ```
--Dados co banco
+Dados co banco
+OBS: Crie o mando de dadoso no Mysql com o seguinte nome "dados_aplicacao" e certifique que as configurações do arquivo properties esteja como está a baixo.
 
 ```bash
 #Altera a estrutura da tabela caso a entidade tenha mudanças
