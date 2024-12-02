@@ -41,6 +41,21 @@ cd seu-repositorio/backend
 ```bash 
 src/main/resources/application.properties.
 ```
+-Dados co banco
+
+```bash
+#Altera a estrutura da tabela caso a entidade tenha mudanças
+spring.jpa.hibernate.ddl-auto=update
+
+#Acesso ao banco de dados
+spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/dados_aplicacao
+
+#Usuário do banco de dados
+spring.datasource.username=root
+
+#Senha do banco de dados
+spring.datasource.password=novasenha
+```
 
 4.Compile e execute a aplicação:
 ```bash 
